@@ -2,24 +2,26 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Role;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $password = config('reservas.admin.password');
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        if (! $password) {
+            $this->command?->error('Define ADMIN_PASSWORD en backend/.env para crear el administrador.');
+
+            return;
+        }
+
+        $admin = User::firstOrNew(['email' => config('reservas.admin.email')]);
+        $admin->name = config('reservas.admin.name');
+        $admin->password = $password; // el cast 'hashed' la encripta
+        $admin->role = Role::Admin;
+        $admin->save();
     }
 }
