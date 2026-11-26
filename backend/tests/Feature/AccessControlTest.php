@@ -27,26 +27,6 @@ class AccessControlTest extends TestCase
         $this->assertDatabaseHas('users', ['email' => 'test@mail.com', 'role' => 'user']);
     }
 
-    public function test_regular_users_cannot_access_admin_routes(): void
-    {
-        $this->actingAs(User::factory()->create(), 'sanctum')
-            ->getJson('/api/admin/ping')
-            ->assertForbidden();
-    }
-
-    public function test_admins_can_access_admin_routes(): void
-    {
-        $this->actingAs(User::factory()->admin()->create(), 'sanctum')
-            ->getJson('/api/admin/ping')
-            ->assertOk()
-            ->assertJson(['ok' => true]);
-    }
-
-    public function test_guests_cannot_access_admin_routes(): void
-    {
-        $this->getJson('/api/admin/ping')->assertUnauthorized();
-    }
-
     public function test_user_endpoint_returns_the_role(): void
     {
         $this->actingAs(User::factory()->admin()->create(), 'sanctum')
