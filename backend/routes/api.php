@@ -19,6 +19,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user', fn (Request $request) => $request->user());
 
+    Route::get('/rooms/{room}/availability', [RoomController::class, 'availability']);
+
     Route::apiResource('rooms', RoomController::class)->only(['index', 'show']);
 
     Route::middleware('admin')->group(function () {
