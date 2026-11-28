@@ -1442,3 +1442,98 @@ button.chip:hover {
     justify-content: space-between;
   }
 }
+
+/* ---------- Administración ---------- */
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.tabs button {
+  padding: 0.7rem 1.1rem;
+  border-bottom: 2px solid transparent;
+  border-radius: 10px 10px 0 0;
+  background: none;
+  color: var(--text-muted);
+}
+.tabs button:hover {
+  background: var(--surface-soft);
+  color: var(--text);
+}
+.tabs button.active {
+  border-bottom-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+button.with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+button.link.danger {
+  color: var(--danger);
+}
+button.link.danger:hover {
+  background: #fef2f2;
+}
+button.link:disabled {
+  opacity: 0.5;
+}
+
+.room-cell {
+  display: grid;
+  gap: 0.1rem;
+  max-width: 320px;
+}
+.room-cell .muted {
+  overflow: hidden;
+  font-size: 0.85rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.row-actions {
+  white-space: nowrap;
+  text-align: right;
+}
+
+.dialog-wide {
+  max-width: 560px;
+}
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+textarea {
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  resize: vertical;
+}
+textarea:focus {
+  outline: 2px solid var(--primary);
+  border-color: transparent;
+}
+
+label.check {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 500;
+}
+label.check input {
+  width: 1.1rem;
+  height: 1.1rem;
+  padding: 0;
+}
+
+@media (max-width: 640px) {
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
