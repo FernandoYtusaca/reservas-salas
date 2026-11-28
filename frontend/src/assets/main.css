@@ -1317,8 +1317,128 @@ button.chip:hover {
   }
 }
 
+/* ---------- Mis reservas ---------- */
+.badge-ok {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.booking-list {
+  display: grid;
+  gap: 0.75rem;
+}
+.empty-state {
+  display: grid;
+  justify-items: start;
+  gap: 1rem;
+}
+.empty-state p {
+  margin: 0;
+}
+
+.booking-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.booking-item.cancelled {
+  opacity: 0.65;
+}
+.booking-item.cancelled .booking-title {
+  text-decoration: line-through;
+}
+
+.booking-date {
+  flex-shrink: 0;
+  width: 56px;
+  padding: 0.4rem 0;
+  border-radius: 12px;
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+  text-align: center;
+}
+.booking-date .month {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.booking-date .day {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.booking-main {
+  flex: 1;
+  min-width: 0;
+}
+.booking-title {
+  overflow: hidden;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.booking-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin-top: 0.15rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+.booking-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.booking-side {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+/* ---------- Cuadro de diálogo ---------- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  overflow-y: auto;
+  background: rgb(20 30 60 / 45%);
+  animation: fade-in 0.15s ease both;
+}
+.dialog {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+  max-width: 420px;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+}
+.dialog p {
+  margin: 0;
+}
+
 @media (max-width: 640px) {
-  .tick:nth-child(even) {
-    display: none;
+  .booking-item {
+    flex-wrap: wrap;
+  }
+  .booking-side {
+    width: 100%;
+    justify-content: space-between;
   }
 }
